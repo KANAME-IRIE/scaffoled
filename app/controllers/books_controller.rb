@@ -3,10 +3,16 @@ class BooksController < ApplicationController
     def index 
         @Books = Book.all
     end
+    
     def show
     end
-    def create
-        @book = Book.new(book_params)
+
+    def new
+      @book = Book.new
+  end
+   
+  def create
+    @book = Book.new(book_params)
     
         respond_to do |format|
           if @book.save
@@ -18,15 +24,30 @@ class BooksController < ApplicationController
           end
         end
       end
-    def new
-        @book = Book.new
+    
+      def edit
     end
-    def edit
-    end
+
     def update
+      respond_to do |format|
+        if @book.update(user_params)
+          format.html { redirect_to @book, notice: 'User was successfully updated.' }
+          format.json { render :show, status: :ok, location: @book }
+        else
+          format.html { render :edit }
+          format.json { render json: @book.errors, status: :unprocessable_entity }
+        end
+      end
     end
+    
     def destroy
+      @book.destroy
+      respond_to do |format|
+        format.html { redirect_to books_url, notice: 'User was successfully destroyed.' }
+        format.json { head :no_content }
     end
+  end
+  
     
     private
     
