@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
-    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    before_action :set_book, only: [:show, :edit, :update, :destroy]
+
     def index 
         @Books = Book.all
     end
@@ -30,7 +31,7 @@ class BooksController < ApplicationController
 
     def update
       respond_to do |format|
-        if @book.update(user_params)
+        if @book.update(book_params)
           format.html { redirect_to @book, notice: 'User was successfully updated.' }
           format.json { render :show, status: :ok, location: @book }
         else
@@ -57,6 +58,6 @@ class BooksController < ApplicationController
 
     
     def book_params
-      params.require(:book).permit(:name)
+      params.require(:book).permit(:titile)
     end
 end

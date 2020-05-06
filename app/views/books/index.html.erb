@@ -6,14 +6,14 @@
 <table>
     <thead>
         <tr>
-            <th>Name</th>
+            <th>Title</th>
         </tr>
     <thead>
 
 <tbody>
     <% @Books.each do|book| %>
         <tr>
-            <td><%= book.name %> </td>
+            <td><%= book.title %> </td>
             <td><%= link_to "Show", "/books/:id" %></td>
             <td><%= link_to 'Edit', edit_book_path(book) %></td>
             <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
