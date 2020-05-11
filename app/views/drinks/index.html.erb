@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1>飲み物</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>量</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @drinks.each do |drink| %>
+      <tr>
+        <td><%= drink.name %></td>
+        <td><%= drink.amount %></td>
+        <td><%= link_to "詳細", drink %></td>
+        <td><%= link_to "編集", edit_drink_path(drink) %></td>
+        <td><%= link_to "削除", drink, method: :delate, data:{confirm: "削除しますか？"} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+  <%= link_to "新規作成", new_drink_path %>
+
+
