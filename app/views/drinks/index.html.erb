@@ -18,7 +18,7 @@
         <td><%= drink.amount %></td>
         <td><%= link_to "詳細", drink %></td>
         <td><%= link_to "編集", edit_drink_path(drink) %></td>
-        <td><%= link_to "削除", drink, method: :delate, data:{confirm: "削除しますか？"} %></td>
+        <td><%= link_to "削除", drink, method: :delete, data:{confirm: "削除しますか？"} %></td>
       </tr>
     <% end %>
   </tbody>
