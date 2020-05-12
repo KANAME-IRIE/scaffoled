@@ -15,7 +15,7 @@ class DrinksController < ApplicationController
   end
 
   def create
-    @drink = Drink.new(user_params)
+    @drink = Drink.new(drink_params)
 
     respond_to do |format|
       if @drink.save
@@ -30,10 +30,22 @@ class DrinksController < ApplicationController
   end
 
   def update
+    respond_to do |format|
+      if @drink.update(drink_params)
+        format.html {redirect_to @drink, notice: "Drink was succcessfully updated."}
+      else
+        format.html {render :edit}
+      end
+    end
   end
   
   def destroy
+    @drink.destroy
+    respond_to do |format|
+      format.html { redirect_to drinks_url, notice: 'Drink was successfully destroyed.' }  
+    end
   end
+
 
 private
 

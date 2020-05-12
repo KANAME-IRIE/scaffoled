@@ -1,10 +1,10 @@
 <%= form_with(model: drink, local: true) do |form| %>
   <% if drink.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluraize(drink.errors.count, "error") %>prohibited this drink from being saved:</h2>
+      <h2><%= pluralize(drink.errors.count, "error") %>prohibited this drink from being saved:</h2>
 
       <ul>
-        <% drink.errors.full_massage.each do |message| %>
+        <% drink.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <% form.label :飲み物 %>
+    <%= form.label :名前 %>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <% form.label :量　%>
+    <%= form.label :量　%>
     <%= form.text_field :amount %>
   </div>
 
-  <div>
+  <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>

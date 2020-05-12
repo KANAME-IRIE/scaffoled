@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+    <strong>名前:</strong>
+    <%= @drink.name %>
+</p>
+
+<p>
+    <strong>量:</strong>
+    <%= @drink.amount %>
+</p>
+
+<%= link_to "編集",　edit_drink_path(@drink) %>
+<%= link_to "終了",  driks_path %>
